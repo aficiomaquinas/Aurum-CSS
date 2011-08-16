@@ -1,0 +1,281 @@
+
+/*  Aurum CSS
+	by V’ctor Gonz‡lez
+	http://victtor.com
+	
+	This work is licensed under the Creative Commons Attribution 3.0 Unported License.
+	To view a copy of this license, visit http://creativecommons.org/licenses/by/3.0/
+	or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View,
+	California, 94041, USA. */
+
+
+//////////////////////////////////////////////
+// REUSABLE TIME-SAVERS
+//////////////////////////////////////////////
+
+.links (@link_color, @link_decoration, @hover_color, @hover_decoration, @active_color, @active_decoration) {
+	a {
+		&:link {
+			color: @link_color;
+			text-decoration: @link_decoration;}
+		&:visited {
+			color: @link_color;
+			text-decoration: @link_decoration;}
+		&:hover, &:focus {
+			color: @hover_color;
+			text-decoration: @hover_decoration;}
+		&:active {
+			color: @active_color;
+			text-decoration: @active_decoration;
+			top: 1px;
+			left: 1px;}}}
+
+.center () {margin: 0 auto;}
+
+.clearfix () {
+	&:after {
+		visibility: hidden;
+		display: block;
+		font-size: 0;
+		content: " ";
+		clear: both;
+		height: 0;}}
+	
+// Nicholas Gallagher's Micro Clearfix
+.cf:before,.cf:after{content:"";display:table;}.cf:after{clear:both;}.cf{zoom:1;}
+
+//////////////////////////////////////////////
+// CSS3 FUNCTIONS WITH RESPECTIVE FALLBACKS
+//////////////////////////////////////////////
+
+// http://designshack.co.uk/articles/css/using-less-js-to-simplify-your-css3
+
+// Rounded Corners
+.rounded_corners (@radius: 12px) {
+	-moz-border-radius: @radius;
+	-webkit-border-radius: @radius;
+	border-radius: @radius;
+	behavior: url(border-radius.htc);}
+
+// Rounded Corners
+.rounded_corners_all (@topleft, @topright, @bottomright, @bottomleft) {
+	-moz-border-radius: @topleft @topright @bottomright @bottomleft;
+	-webkit-border-radius: @topleft @topright @bottomright @bottomleft;
+	border-radius: @topleft @topright @bottomright @bottomleft;
+	behavior: url(border-radius.htc);}
+
+// Box Shadow
+.box_shadow (@hor: 3px, @vert: 2px, @blur: 5px, @shadow: #757171) {
+	-webkit-box-shadow: @hor @vert @blur @shadow;
+	-moz-box-shadow: @hor @vert @blur @shadow;
+	box-shadow: @hor @vert @blur @shadow;}
+
+// Box Shadow RGBA
+.box_shadow_rgba (@hor: 0, @vert: 0, @blur: 8px, @r,@g,@b,@a) {
+	-webkit-box-shadow: @hor @vert @blur rgba(@r,@g,@b,@a);
+	-moz-box-shadow: @hor @vert @blur rgba(@r,@g,@b,@a);
+	box-shadow: @hor @vert @blur rgba(@r,@g,@b,@a);}
+
+// Box Shadow Inset
+.box_shadow_inset (@hor: 0, @vert: 0, @blur: 8px, @r,@g,@b,@a) {
+	-webkit-box-shadow: inset @hor @vert @blur rgba(@r,@g,@b,@a);
+	-moz-box-shadow: inset @hor @vert @blur rgba(@r,@g,@b,@a);
+	box-shadow: inset @hor @vert @blur rgba(@r,@g,@b,@a);}
+	
+.shadow_inset (@hor: 0, @vert: 0, @blur: 8px, @rgba: rgba(0,0,0,.5), @inset: inset ) {
+	-webkit-box-shadow: @arguments;
+	-moz-box-shadow: @arguments;
+	box-shadow: @arguments;}
+
+// Box Shadow Both
+.box_shadow_both (@hor: 0, @vert: 0, @blur: 8px, @r,@g,@b,@a, @hor2: 0, @vert2: 0, @blur2: 8px, @r2,@g2,@b2,@a2) {
+	-webkit-box-shadow: inset @hor @vert @blur rgba(@r,@g,@b,@a), @hor2 @vert2 @blur2 rgba(@r2,@g2,@b2,@a2);
+	-moz-box-shadow: inset @hor @vert @blur rgba(@r,@g,@b,@a), @hor2 @vert2 @blur2 rgba(@r2,@g2,@b2,@a2);
+	box-shadow: inset @hor @vert @blur rgba(@r,@g,@b,@a), @hor2 @vert2 @blur2 rgba(@r2,@g2,@b2,@a2);}
+
+// Transition
+.transition (@range: all, @time: 1s, @ease: ease-in-out, @stay: 0) {
+	-moz-transition: @range @time @ease @stay;
+	-o-transition: @range @time @ease @stay;
+	-webkit-transition: @range @time @ease @stay;
+	transition: @range @time @ease @stay;}
+
+// Opacity
+.opacity (@opacity) {
+	opacity: @opacity;
+	filter: e(%("progid:DXImageTransform.Microsoft.Alpha(opacity=%s)", @opacity*100));}
+
+// IE gradient filter requires the full, 6-character hex color, no abbreviations or rgb colors
+// https://less.tenderapp.com/discussions/problems/6-ie-specific-transformations-fail-with-less-css#comment_4542526
+// Although now with JS parsing you could implement it natively in this function.
+.linear_gradient (@top: #ffffff, @bottom: #000000) {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(@top), to(@bottom));
+	background-image: -moz-linear-gradient(top, @top, @bottom);
+	background-image: linear-gradient(top, @top, @bottom);
+	filter: e('progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=')@top e(', endColorstr=')@bottom e(')');
+	zoom: 1;}
+
+// RGBA background
+.box_rgba (@r,@g,@b,@a,@hex) {
+	background-color: rgba(@r,@g,@b,@a);
+	filter: e('progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=')@hex e(', endColorstr=')@hex e(')');
+	zoom: 1;}
+	
+// This function was not written by me. I can't remember who did although a quick search will do.
+.rotate (@deg: 0){ 
+	@degree: @deg;
+	@rotation: `parseInt(this.degree.toJS())`;
+	@degToRadian: `Math.PI * 2 / 360`;
+	@rad: `this.rotation.toJS() * this.degToRadian.toJS()`;
+	@M11: `Math.cos(this.rad.toJS())`;
+	@M21: `Math.sin(this.rad.toJS())`;
+
+	// the properties
+	-moz-transform: rotate(@deg);
+	-webkit-transform: rotate(@deg);
+	-o-transform: rotate(@deg);
+	transform: rotate(@deg);
+	filter: e(%("progid:DXImageTransform.Microsoft.Matrix(M11=%d, M12=-%d, M21=%d, M22=%d)", @M11, @M21, @M21, @M11));
+}
+
+.box (@orient, @pack, @align) {
+	display: -webkit-box;
+	-webkit-box-orient: @orient;
+	-webkit-box-pack: @pack;
+	-webkit-box-align: @align;
+
+	display: -moz-box;
+	-moz-box-orient: @orient;
+	-moz-box-pack: @pack;
+	-moz-box-align: @align;
+
+	display: box;
+	box-orient: @orient;
+	box-pack: @pack;
+	box-align: @align;}
+
+.box_flex (@flex) {
+	-webkit-box-flex: @flex;
+	-moz-box-flex: @flex;
+	box-flex: @flex;}
+
+//////////////////////////////////////////////
+// CUTE 2.0 LOOKING CSS
+//////////////////////////////////////////////
+
+.letterpress_darken (@color) {
+	color: @color;
+	text-shadow: darken(spin(@color, 150), 90%) 1px 1px 0;}
+	
+.letterpress_ligthen (@color) {
+	color: @color;
+	text-shadow: lighten(spin(@color, 150), 90%) 1px 1px 0;}
+	
+.top_shadow () {
+	// Place in body
+	// http://css-tricks.com/snippets/css/top-shadow/
+	&:before {
+		content: "";
+		position: fixed;
+		top: -10px;
+		left: 0;
+		width: 100%;
+		height: 10px;
+		z-index: 100;
+		.box_shadow_rgba(0px, 0px, 50px, 0,0,0,.3);}}
+			
+//////////////////////////////////////////////
+// ZURB AWSOME BUTTONS
+// http://www.zurb.com/article/266/super-awesome-buttons-with-css3-and-rgba
+// http://www.zurb.com/blog_uploads/0000/0617/buttons-03.html
+//////////////////////////////////////////////
+
+/*
+	Example usage:
+	input {
+		.awesome_zurb_button > .base;
+		.awesome_zurb_button > .large;
+		.awesome_zurb_button > .magenta;}
+*/
+
+.awesome_zurb_button () {
+	.base {
+		&:visited {color: #fff;}
+		&:hover   {color: #fff; background-color: #111;}
+		&:active  {top: 1px;}
+		.transition(background-color,.3s,ease-in-out,0);
+		background: #222 url(../images/alert-overlay.png) repeat-x; // Get this from the original source.
+		display: inline-block;
+		padding: 5px 10px 6px;
+		color: #fff;
+		text-decoration: none;
+		.rounded_corners(8px);
+		.box_shadow_rgba(0,1px,3px,0,0,0,.5);
+		border-bottom: 1px solid rgba(0,0,0,0.25);
+		position: relative;
+		cursor: pointer;
+		text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+		font: 13px/1;
+		font-weight: 600;
+		text-decoration: none;
+		border: 0;}
+	.small   {font-size: 11px;}
+	.medium  {font-size: 13px;}
+	.large   {font-size: 14px; padding: 8px 14px 9px;}
+	.xlarge   {font-size: 18px; padding: 12px 18px 13px;}
+	.xxlarge  {font-size: 25px; padding: 18px 24px 19px;}
+	.xxxlarge {font-size: 35px; padding: 28px 34px 29px;}
+	.green   {background-color: #91bd09; &:hover{background-color: #749a02;}}
+	.blue    {background-color: #2daebf; &:hover{background-color: #007d9a;}}
+	.red     {background-color: #e33100; &:hover{background-color: #872300;}}
+	.magenta {background-color: #a9014b; &:hover{background-color: #630030;}}
+	.orange  {background-color: #ff5c00; &:hover{background-color: #d45500;}}
+	.yellow  {background-color: #ffb515; &:hover{background-color: #fc9200;}}}
+	
+.awesome_zurb_glow_button () {
+	.base {
+		background-image: none;
+		.linear_gradient(rgba(255,255,255,.25), transparent);
+		display: block;
+		padding: 0;
+		text-align: center;
+		color: #fff;
+		text-decoration: none;
+		.rounded_corners(10px);
+		.box_shadow_rgba(0,1px,3px,0,0,0,.5);
+		border-bottom: 1px solid rgba(0,0,0,0.25);
+		position: relative;
+		cursor: pointer;
+		text-shadow: 0 -1px 5px rgba(0,0,0,0.25);
+		font: 13px/1;
+		font-weight: 600;
+		text-decoration: none;
+		border: 0;
+		-webkit-animation-duration: 2s;
+        -webkit-animation-iteration-count: infinite;}
+        
+	.small    {font-size: 11px;}
+	.medium   {font-size: 13px;}
+	.large    {font-size: 14px; padding: 8px 14px 9px;}
+	.xlarge   {font-size: 18px; padding: 12px 18px 13px;}
+	.xxlarge  {font-size: 25px; padding: 18px 24px 19px;}
+	.xxxlarge {font-size: 35px; padding: 28px 34px 29px;}
+	
+	.green {
+		-webkit-animation-name: greenPulse; -webkit-animation-duration: 3s;
+		&:hover{color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.50);}}
+	.blue {
+		-webkit-animation-name: bluePulse; -webkit-animation-duration: 3s;
+		&:hover{color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.50);}}
+	.red {
+		-webkit-animation-name: redPulse; -webkit-animation-duration: 3s;
+		&:hover{color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.50);}}
+	.magenta {
+		-webkit-animation-name: magentaPulse; -webkit-animation-duration: 3s;
+		&:hover{color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.50);}}
+	.orange {
+		-webkit-animation-name: orangePulse; -webkit-animation-duration: 3s;
+		&:hover{color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.50);}}
+	.yellow {
+		-webkit-animation-name: yellowPulse; -webkit-animation-duration: 3s;
+		&:hover{color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.50);}}}

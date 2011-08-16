@@ -1,0 +1,360 @@
+
+/*  Aurum CSS
+	by V’ctor Gonz‡lez
+	http://victtor.com
+	
+	This work is licensed under the Creative Commons Attribution 3.0 Unported License.
+	To view a copy of this license, visit http://creativecommons.org/licenses/by/3.0/
+	or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View,
+	California, 94041, USA. */
+	
+
+//////////////////////////////////////////////
+// GOLDEN RATIO AND REUSABLE PAGE WIDTHS
+//////////////////////////////////////////////
+
+@grb: 1.618; // Golden ratio bigger
+@grs: 0.618; // Goldon ratio smaller
+
+
+//////////////////////////////////////////////
+// RULER DIMENSIONS
+//////////////////////////////////////////////
+
+@width1:  100%     * @grs;        //   61.80  %
+@width2:  @width1  * @grs;        //   38.19  %
+@width3:  @width2  * @grs;        //   23.60  %
+@width4:  @width3  * @grs;        //   14.59  %
+@width5:  @width4  * @grs;        //    9.01  %
+@width6:  @width5  * @grs;        //    5.57  %
+@width7:  @width6  * @grs;        //    3.44  %
+@width8:  @width7  * @grs;        //    2.13  %
+@width9:  @width8  * @grs;        //    1.31  %
+@width10: @width9  * @grs;        //    0.81  %
+@width11: @width10 * @grs;        //    0.50  %
+@width12: @width11 * @grs;        //    0.31  %
+@width13: @width12 * @grs;        //    0.19  %
+@width14: @width13 * @grs;        //    0.12  %
+@width15: @width14 * @grs;        //    0.07  %
+
+// To percentage
+@w01:  @width1 / 100;
+@w02:  @width2 / 100;
+@w03:  @width3 / 100;
+@w04:  @width4 / 100;
+@w05:  @width5 / 100;
+@w06:  @width6 / 100;
+@w07:  @width7 / 100;
+@w08:  @width8 / 100;
+@w09:  @width9 / 100;
+@w10: @width10 / 100;
+@w11: @width11 / 100;
+@w12: @width12 / 100;
+@w13: @width13 / 100;
+@w14: @width14 / 100;
+@w15: @width15 / 100;
+						
+// Scales based on main element width
+@800_width1:    800px * @w01; //  494.40 px
+@800_width2:    800px * @w02; //  305.54 px
+@800_width3:    800px * @w03; //  188.82 px
+@800_width4:    800px * @w04; //  116.69 px
+@800_width5:    800px * @w05; //   72.12 px
+@800_width6:    800px * @w06; //   44.57 px
+@800_width7:    800px * @w07; //   27.54 px
+@800_width8:    800px * @w08; //   17.02 px
+@800_width9:    800px * @w09; //   10.52 px
+@800_width10:   800px * @w10; //    6.50 px
+@800_width11:   800px * @w11; //    4.02 px
+@800_width12:   800px * @w12; //    2.48 px
+@800_width13:   800px * @w13; //    1.53 px
+@800_width14:   800px * @w14; //    0.95 px
+@800_width15:   800px * @w15; //    0.59 px
+
+@1024_width1:  1024px * @w01; //  632.83 px
+@1024_width2:  1024px * @w02; //  391.09 px
+@1024_width3:  1024px * @w03; //  241.69 px
+@1024_width4:  1024px * @w04; //  149.37 px
+@1024_width5:  1024px * @w05; //   92.31 px
+@1024_width6:  1024px * @w06; //   57.05 px
+@1024_width7:  1024px * @w07; //   35.25 px
+@1024_width8:  1024px * @w08; //   21.79 px
+@1024_width9:  1024px * @w09; //   13.46 px
+@1024_width10: 1024px * @w10; //    8.32 px
+@1024_width11: 1024px * @w11; //    5.14 px
+@1024_width12: 1024px * @w12; //    3.18 px
+@1024_width13: 1024px * @w13; //    1.96 px
+@1024_width14: 1024px * @w14; //    1.21 px
+@1024_width15: 1024px * @w15; //    0.75 px
+
+@1280_width1:  1280px * @w01; //  791.04 px
+@1280_width2:  1280px * @w02; //  488.86 px
+@1280_width3:  1280px * @w03; //  302.12 px
+@1280_width4:  1280px * @w04; //  186.71 px
+@1280_width5:  1280px * @w05; //  115.39 px
+@1280_width6:  1280px * @w06; //   71.31 px
+@1280_width7:  1280px * @w07; //   44.07 px
+@1280_width8:  1280px * @w08; //   27.23 px
+@1280_width9:  1280px * @w09; //   16.83 px
+@1280_width10: 1280px * @w10; //   10.40 px
+@1280_width11: 1280px * @w11; //    6.43 px
+@1280_width12: 1280px * @w12; //    3.97 px
+@1280_width13: 1280px * @w13; //    2.46 px
+@1280_width14: 1280px * @w14; //    1.52 px
+@1280_width15: 1280px * @w15; //    0.94 px
+
+@1440_width1:  1440px * @w01; //  889.92 px
+@1440_width2:  1440px * @w02; //  549.97 px
+@1440_width3:  1440px * @w03; //  339.88 px
+@1440_width4:  1440px * @w04; //  210.05 px
+@1440_width5:  1440px * @w05; //  129.81 px
+@1440_width6:  1440px * @w06; //   80.22 px
+@1440_width7:  1440px * @w07; //   49.58 px
+@1440_width8:  1440px * @w08; //   30.64 px
+@1440_width9:  1440px * @w09; //   18.93 px
+@1440_width10: 1440px * @w10; //   11.70 px
+@1440_width11: 1440px * @w11; //    7.23 px
+@1440_width12: 1440px * @w12; //    4.47 px
+@1440_width13: 1440px * @w13; //    2.76 px
+@1440_width14: 1440px * @w14; //    1.71 px
+@1440_width15: 1440px * @w15; //    1.05 px
+
+@1680_width1:  1680px * @w01; // 1038.24 px
+@1680_width2:  1680px * @w02; //  641.63 px
+@1680_width3:  1680px * @w03; //  396.53 px
+@1680_width4:  1680px * @w04; //  245.05 px
+@1680_width5:  1680px * @w05; //  151.44 px
+@1680_width6:  1680px * @w06; //   93.59 px
+@1680_width7:  1680px * @w07; //   57.84 px
+@1680_width8:  1680px * @w08; //   35.75 px
+@1680_width9:  1680px * @w09; //   22.09 px
+@1680_width10: 1680px * @w10; //   13.65 px
+@1680_width11: 1680px * @w11; //    8.44 px
+@1680_width12: 1680px * @w12; //    5.21 px
+@1680_width13: 1680px * @w13; //    3.22 px
+@1680_width14: 1680px * @w14; //    1.99 px
+@1680_width15: 1680px * @w15; //    1.23 px
+
+@ipad_p_width1:  768px * @w01;
+@ipad_p_width2:  768px * @w02;
+@ipad_p_width3:  768px * @w03;
+@ipad_p_width4:  768px * @w04;
+@ipad_p_width5:  768px * @w05;
+@ipad_p_width6:  768px * @w06;
+@ipad_p_width7:  768px * @w07;
+@ipad_p_width8:  768px * @w08;
+@ipad_p_width9:  768px * @w09;
+@ipad_p_width10: 768px * @w10;
+@ipad_p_width11: 768px * @w11;
+@ipad_p_width12: 768px * @w12;
+@ipad_p_width13: 768px * @w13;
+@ipad_p_width14: 768px * @w14;
+@ipad_p_width15: 768px * @w15;
+
+@ipad_l_width1:  1024px * @w01;
+@ipad_l_width2:  1024px * @w02;
+@ipad_l_width3:  1024px * @w03;
+@ipad_l_width4:  1024px * @w04;
+@ipad_l_width5:  1024px * @w05;
+@ipad_l_width6:  1024px * @w06;
+@ipad_l_width7:  1024px * @w07;
+@ipad_l_width8:  1024px * @w08;
+@ipad_l_width9:  1024px * @w09;
+@ipad_l_width10: 1024px * @w10;
+@ipad_l_width11: 1024px * @w11;
+@ipad_l_width12: 1024px * @w12;
+@ipad_l_width13: 1024px * @w13;
+@ipad_l_width14: 1024px * @w14;
+@ipad_l_width15: 1024px * @w15;
+
+// Add your own layout!
+@mylayout_width: 960px;
+@mylayout_1:  @mylayout_width * @w01;
+@mylayout_2:  @mylayout_width * @w02;
+@mylayout_3:  @mylayout_width * @w03;
+@mylayout_4:  @mylayout_width * @w04;
+@mylayout_5:  @mylayout_width * @w05;
+@mylayout_6:  @mylayout_width * @w06;
+@mylayout_7:  @mylayout_width * @w07;
+@mylayout_8:  @mylayout_width * @w08;
+@mylayout_9:  @mylayout_width * @w09;
+@mylayout_10: @mylayout_width * @w10;
+@mylayout_11: @mylayout_width * @w11;
+@mylayout_12: @mylayout_width * @w12;
+@mylayout_13: @mylayout_width * @w13;
+@mylayout_14: @mylayout_width * @w14;
+@mylayout_15: @mylayout_width * @w15;
+
+//////////////////////////////////////////////
+// PROPORTION TABLES
+//////////////////////////////////////////////
+
+// http://lamb.cc/typograph/
+
+@traditional_1:    6;
+@traditional_2:    7;
+@traditional_3:    8;
+@traditional_4:    9;
+@traditional_5:   10;
+@traditional_6:   11;
+@traditional_7:   12;
+@traditional_8:   13;
+@traditional_9:   14;
+@traditional_10:  16;
+@traditional_11:  18;
+@traditional_12:  21;
+@traditional_13:  24;
+@traditional_14:  36;
+@traditional_15:  48;
+@traditional_16:  60;
+@traditional_17:  72;
+
+@fibonacci35_1:    3;
+@fibonacci35_2:    5;
+@fibonacci35_3:    8;
+@fibonacci35_4:   13;
+@fibonacci35_5:   21;
+@fibonacci35_6:   34;
+@fibonacci35_7:   55;
+@fibonacci35_8:   89;
+
+@fibonacci35d_1:   6;
+@fibonacci35d_2:  10;
+@fibonacci35d_3:  26;
+@fibonacci35d_4:  48;
+@fibonacci35d_5:  68;
+@fibonacci35d_6: 110;
+
+@standed35_1:      6;
+@standed35_2:      8;
+@standed35_3:     10;
+@standed35_4:     13;
+@standed35_5:     16;
+@standed35_6:     21;
+@standed35_7:     26;
+@standed35_8:     34;
+@standed35_9:     42;
+@standed35_10:    55;
+@standed35_11:    68;
+
+@fibonacci47_1:    4;
+@fibonacci47_2:    7;
+@fibonacci47_3:   11;
+@fibonacci47_4:   18;
+@fibonacci47_5:   29;
+@fibonacci47_6:   47;
+@fibonacci47_7:   76;
+
+@corbusier_1:      4;
+@corbusier_2:      5;
+@corbusier_3:    6.5;
+@corbusier_4:      8;
+@corbusier_5:   10.5;
+@corbusier_6:     13;
+@corbusier_7:     17;
+@corbusier_8:     21;
+@corbusier_9:   27.5;
+@corbusier_10:    34;
+@corbusier_11:  44.5;
+@corbusier_12:    55;
+@corbusier_13:    72;
+@corbusier_14:    89;
+
+
+//////////////////////////////////////////////
+// DECLARE FONT PROPORTIONS
+//////////////////////////////////////////////
+
+@line_heigth: 1.4em;
+@line_margin: .85;
+@base: @corbusier_8; // Smaller base = Bigger size
+
+@font_size: 87.5; // (16px x 87.5) = 14px, Use 100 for 16px
+@px_per_em: (16 * @font_size) / 100; // We use this to parse px.
+@spacing_proportion: (10 / 10); // Modify to match your spacing  preferences.
+
+// Replace first var with the scale of your choice
+@h1_size: ( @corbusier_11 / @base ) * 1em;
+@h2_size: ( @corbusier_10 / @base ) * 1em;
+@h3_size: ( @corbusier_9 / @base ) * 1em;
+@h4_size: ( @corbusier_8 / @base ) * 1em;
+@h5_size: ( @corbusier_7 / @base ) * 1em;
+@h6_size: ( @corbusier_6 / @base ) * 1em;
+
+// Up and Down margin for every size
+@h1_margin: @h1_size * @line_margin;
+@h2_margin: @h2_size * @line_margin;
+@h3_margin: @h3_size * @line_margin;
+@h4_margin: @h4_size * @line_margin;
+@h5_margin: @h5_size * @line_margin;
+@h6_margin: @h6_size * @line_margin;
+
+// Top margin (.618 of total margin)
+@h1_margin_t: (@h1_margin * @spacing_proportion) * @grs; 
+@h2_margin_t: (@h2_margin * @spacing_proportion) * @grs;
+@h3_margin_t: (@h3_margin * @spacing_proportion) * @grs;
+@h4_margin_t: (@h4_margin * @spacing_proportion) * @grs;
+@h5_margin_t: (@h5_margin * @spacing_proportion) * @grs;
+@h6_margin_t: (@h6_margin * @spacing_proportion) * @grs;
+
+// Top margin (.382 of total margin)
+@h1_margin_b: (@h1_margin * @spacing_proportion) * (1 - @grs);
+@h2_margin_b: (@h2_margin * @spacing_proportion) * (1 - @grs);
+@h3_margin_b: (@h3_margin * @spacing_proportion) * (1 - @grs);
+@h4_margin_b: (@h4_margin * @spacing_proportion) * (1 - @grs);
+@h5_margin_b: (@h5_margin * @spacing_proportion) * (1 - @grs);
+@h6_margin_b: (@h6_margin * @spacing_proportion) * (1 - @grs);
+
+
+//////////////////////////////////////////////
+// PRINT PROPORTIONS
+//////////////////////////////////////////////
+
+body {
+	//width: @mylayout_width; // Use @width1 for fluid.
+	font-size: @font_size * 1%;
+	line-height: @line_heigth;}
+
+h1 {
+	font-size: @h1_size;
+	margin-top: @h1_margin_t;
+	margin-bottom: @h1_margin_b;}
+
+
+h2 {
+	font-size: @h2_size;
+	margin-top: @h2_margin_t;
+	margin-bottom: @h2_margin_b;}
+
+h3 {
+	font-size: @h3_size;
+	margin-top: @h3_margin_t;
+	margin-bottom: @h3_margin_b;}
+
+h4, p, li, dd, dt {
+	font-size: @h4_size;
+	margin-top: @h4_margin_t;
+	margin-bottom: @h4_margin_b;}
+
+h5, small {
+	font-size: @h5_size;
+	margin-top: @h5_margin_t;
+	margin-bottom: @h5_margin_b;}
+
+p {
+	line-height: 1.4;
+	overflow: visible;}
+
+p + p {
+	margin-top: @h4_margin;}
+
+h6 {
+	font-size: @h6_size;
+	margin-top: @h6_margin_t;
+	margin-bottom: @h6_margin_b;}
+	
+strong, b {
+	font-weight: bold;}
+
+em, i {
+	font-style: italic;}
