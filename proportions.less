@@ -1,189 +1,223 @@
-
-/*  Aurum CSS
-	by V’ctor Gonz‡lez
+/*
+	Aurum CSS
+	by Victor Gonzalez
 	http://victtor.com
-	
+
 	This work is licensed under the Creative Commons Attribution 3.0 Unported License.
 	To view a copy of this license, visit http://creativecommons.org/licenses/by/3.0/
 	or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View,
-	California, 94041, USA. */
-	
+	California, 94041, USA.
+*/
+
 
 //////////////////////////////////////////////
 // GOLDEN RATIO AND REUSABLE PAGE WIDTHS
 //////////////////////////////////////////////
 
-@grb: 1.618; // Golden ratio bigger
-@grs: 0.618; // Goldon ratio smaller
+@grb: 1.61803399; // Golden ratio bigger
+@grs: @grb - 1; // Goldon ratio smaller
 
 
 //////////////////////////////////////////////
 // RULER DIMENSIONS
 //////////////////////////////////////////////
 
-@width1:  100%     * @grs;        //   61.80  %
-@width2:  @width1  * @grs;        //   38.19  %
-@width3:  @width2  * @grs;        //   23.60  %
-@width4:  @width3  * @grs;        //   14.59  %
-@width5:  @width4  * @grs;        //    9.01  %
-@width6:  @width5  * @grs;        //    5.57  %
-@width7:  @width6  * @grs;        //    3.44  %
-@width8:  @width7  * @grs;        //    2.13  %
-@width9:  @width8  * @grs;        //    1.31  %
-@width10: @width9  * @grs;        //    0.81  %
-@width11: @width10 * @grs;        //    0.50  %
-@width12: @width11 * @grs;        //    0.31  %
-@width13: @width12 * @grs;        //    0.19  %
-@width14: @width13 * @grs;        //    0.12  %
-@width15: @width14 * @grs;        //    0.07  %
+@width1:  100%     * @grs;  //  61.80  %
+@width2:  @width1  * @grs;  //  38.19  %
+@width3:  @width2  * @grs;  //  23.60  %
+@width4:  @width3  * @grs;  //  14.59  %
+@width5:  @width4  * @grs;  //   9.01  %
+@width6:  @width5  * @grs;  //   5.57  %
+@width7:  @width6  * @grs;  //   3.44  %
+@width8:  @width7  * @grs;  //   2.13  %
+@width9:  @width8  * @grs;  //   1.31  %
+@width10: @width9  * @grs;  //   0.81  %
+@width11: @width10 * @grs;  //   0.50  %
+@width12: @width11 * @grs;  //   0.31  %
+@width13: @width12 * @grs;  //   0.19  %
+@width14: @width13 * @grs;  //   0.12  %
+@width15: @width14 * @grs;  //   0.07  %
 
-// To percentage
-@w01:  @width1 / 100;
-@w02:  @width2 / 100;
-@w03:  @width3 / 100;
-@w04:  @width4 / 100;
-@w05:  @width5 / 100;
-@w06:  @width6 / 100;
-@w07:  @width7 / 100;
-@w08:  @width8 / 100;
-@w09:  @width9 / 100;
-@w10: @width10 / 100;
-@w11: @width11 / 100;
-@w12: @width12 / 100;
-@w13: @width13 / 100;
-@w14: @width14 / 100;
-@w15: @width15 / 100;
-						
+// Integers
+@1:  100 * @grs;  //   61.80        
+@2:  @1  * @grs;  //   38.19         
+@3:  @2  * @grs;  //   23.60         
+@4:  @3  * @grs;  //   14.59         
+@5:  @4  * @grs;  //   09.01         
+@6:  @5  * @grs;  //   05.57         
+@7:  @6  * @grs;  //   03.44         
+@8:  @7  * @grs;  //   02.13         
+@9:  @8  * @grs;  //   01.31         
+@10: @9  * @grs;  //   00.81         
+@11: @10 * @grs;  //   00.50         
+@12: @11 * @grs;  //   00.31         
+@13: @12 * @grs;  //   00.19         
+@14: @13 * @grs;  //   00.12         
+@15: @14 * @grs;  //   00.07         
+
+// To decimal percentage
+@p01: @1  / 100;  //   0.6180
+@p02: @2  / 100;  //   0.3819
+@p03: @3  / 100;  //   0.2360
+@p04: @4  / 100;  //   0.1459
+@p05: @5  / 100;  //   0.0901
+@p06: @6  / 100;  //   0.0557
+@p07: @7  / 100;  //   0.0344
+@p08: @8  / 100;  //   0.0213
+@p09: @9  / 100;  //   0.0131
+@p10: @10 / 100;  //   0.0081
+@p11: @11 / 100;  //   0.0050
+@p12: @12 / 100;  //   0.0031
+@p13: @13 / 100;  //   0.0019
+@p14: @14 / 100;  //   0.0012
+@p15: @15 / 100;  //   0.0007
+
+
 // Scales based on main element width
-@800_width1:    800px * @w01; //  494.40 px
-@800_width2:    800px * @w02; //  305.54 px
-@800_width3:    800px * @w03; //  188.82 px
-@800_width4:    800px * @w04; //  116.69 px
-@800_width5:    800px * @w05; //   72.12 px
-@800_width6:    800px * @w06; //   44.57 px
-@800_width7:    800px * @w07; //   27.54 px
-@800_width8:    800px * @w08; //   17.02 px
-@800_width9:    800px * @w09; //   10.52 px
-@800_width10:   800px * @w10; //    6.50 px
-@800_width11:   800px * @w11; //    4.02 px
-@800_width12:   800px * @w12; //    2.48 px
-@800_width13:   800px * @w13; //    1.53 px
-@800_width14:   800px * @w14; //    0.95 px
-@800_width15:   800px * @w15; //    0.59 px
+@640_width1:      640 * @p01;
+@640_width2:      640 * @p02;
+@640_width3:      640 * @p03;
+@640_width4:      640 * @p04;
+@640_width5:      640 * @p05;
+@640_width6:      640 * @p06;
+@640_width7:      640 * @p07;
+@640_width8:      640 * @p08;
+@640_width9:      640 * @p09;
+@640_width10:     640 * @p10;
+@640_width11:     640 * @p11;
+@640_width12:     640 * @p12;
+@640_width13:     640 * @p13;
+@640_width14:     640 * @p14;
+@640_width15:     640 * @p15;
+			   				    
+@720_width1:      720 * @p01;
+@720_width2:      720 * @p02;
+@720_width3:      720 * @p03;
+@720_width4:      720 * @p04;
+@720_width5:      720 * @p05;
+@720_width6:      720 * @p06;
+@720_width7:      720 * @p07;
+@720_width8:      720 * @p08;
+@720_width9:      720 * @p09;
+@720_width10:     720 * @p10;
+@720_width11:     720 * @p11;
+@720_width12:     720 * @p12;
+@720_width13:     720 * @p13;
+@720_width14:     720 * @p14;
+@720_width15:     720 * @p15;
+			   				    
+@900_width1:      900 * @p01; //  494.40
+@900_width2:      900 * @p02; //  305.54
+@900_width3:      900 * @p03; //  188.82
+@900_width4:      900 * @p04; //  116.69
+@900_width5:      900 * @p05; //   72.12
+@900_width6:      900 * @p06; //   44.57
+@900_width7:      900 * @p07; //   27.54
+@900_width8:      900 * @p08; //   17.02
+@900_width9:      900 * @p09; //   10.52
+@900_width10:     900 * @p10; //    6.50
+@900_width11:     900 * @p11; //    4.02
+@900_width12:     900 * @p12; //    2.48
+@900_width13:     900 * @p13; //    1.53
+@900_width14:     900 * @p14; //    0.95
+@900_width15:     900 * @p15; //    0.59
 
-@1024_width1:  1024px * @w01; //  632.83 px
-@1024_width2:  1024px * @w02; //  391.09 px
-@1024_width3:  1024px * @w03; //  241.69 px
-@1024_width4:  1024px * @w04; //  149.37 px
-@1024_width5:  1024px * @w05; //   92.31 px
-@1024_width6:  1024px * @w06; //   57.05 px
-@1024_width7:  1024px * @w07; //   35.25 px
-@1024_width8:  1024px * @w08; //   21.79 px
-@1024_width9:  1024px * @w09; //   13.46 px
-@1024_width10: 1024px * @w10; //    8.32 px
-@1024_width11: 1024px * @w11; //    5.14 px
-@1024_width12: 1024px * @w12; //    3.18 px
-@1024_width13: 1024px * @w13; //    1.96 px
-@1024_width14: 1024px * @w14; //    1.21 px
-@1024_width15: 1024px * @w15; //    0.75 px
+@1024_width1:    1024 * @p01; //  632.83
+@1024_width2:    1024 * @p02; //  391.09
+@1024_width3:    1024 * @p03; //  241.69
+@1024_width4:    1024 * @p04; //  149.37
+@1024_width5:    1024 * @p05; //   92.31
+@1024_width6:    1024 * @p06; //   57.05
+@1024_width7:    1024 * @p07; //   35.25
+@1024_width8:    1024 * @p08; //   21.79
+@1024_width9:    1024 * @p09; //   13.46
+@1024_width10:   1024 * @p10; //    8.32
+@1024_width11:   1024 * @p11; //    5.14
+@1024_width12:   1024 * @p12; //    3.18
+@1024_width13:   1024 * @p13; //    1.96
+@1024_width14:   1024 * @p14; //    1.21
+@1024_width15:   1024 * @p15; //    0.75
 
-@1280_width1:  1280px * @w01; //  791.04 px
-@1280_width2:  1280px * @w02; //  488.86 px
-@1280_width3:  1280px * @w03; //  302.12 px
-@1280_width4:  1280px * @w04; //  186.71 px
-@1280_width5:  1280px * @w05; //  115.39 px
-@1280_width6:  1280px * @w06; //   71.31 px
-@1280_width7:  1280px * @w07; //   44.07 px
-@1280_width8:  1280px * @w08; //   27.23 px
-@1280_width9:  1280px * @w09; //   16.83 px
-@1280_width10: 1280px * @w10; //   10.40 px
-@1280_width11: 1280px * @w11; //    6.43 px
-@1280_width12: 1280px * @w12; //    3.97 px
-@1280_width13: 1280px * @w13; //    2.46 px
-@1280_width14: 1280px * @w14; //    1.52 px
-@1280_width15: 1280px * @w15; //    0.94 px
+@1280_width1:    1280 * @p01; //  791.04
+@1280_width2:    1280 * @p02; //  488.86
+@1280_width3:    1280 * @p03; //  302.12
+@1280_width4:    1280 * @p04; //  186.71
+@1280_width5:    1280 * @p05; //  115.39
+@1280_width6:    1280 * @p06; //   71.31
+@1280_width7:    1280 * @p07; //   44.07
+@1280_width8:    1280 * @p08; //   27.23
+@1280_width9:    1280 * @p09; //   16.83
+@1280_width10:   1280 * @p10; //   10.40
+@1280_width11:   1280 * @p11; //    6.43
+@1280_width12:   1280 * @p12; //    3.97
+@1280_width13:   1280 * @p13; //    2.46
+@1280_width14:   1280 * @p14; //    1.52
+@1280_width15:   1280 * @p15; //    0.94
 
-@1440_width1:  1440px * @w01; //  889.92 px
-@1440_width2:  1440px * @w02; //  549.97 px
-@1440_width3:  1440px * @w03; //  339.88 px
-@1440_width4:  1440px * @w04; //  210.05 px
-@1440_width5:  1440px * @w05; //  129.81 px
-@1440_width6:  1440px * @w06; //   80.22 px
-@1440_width7:  1440px * @w07; //   49.58 px
-@1440_width8:  1440px * @w08; //   30.64 px
-@1440_width9:  1440px * @w09; //   18.93 px
-@1440_width10: 1440px * @w10; //   11.70 px
-@1440_width11: 1440px * @w11; //    7.23 px
-@1440_width12: 1440px * @w12; //    4.47 px
-@1440_width13: 1440px * @w13; //    2.76 px
-@1440_width14: 1440px * @w14; //    1.71 px
-@1440_width15: 1440px * @w15; //    1.05 px
+@1440_width1:    1440 * @p01; //  889.92
+@1440_width2:    1440 * @p02; //  549.97
+@1440_width3:    1440 * @p03; //  339.88
+@1440_width4:    1440 * @p04; //  210.05
+@1440_width5:    1440 * @p05; //  129.81
+@1440_width6:    1440 * @p06; //   80.22
+@1440_width7:    1440 * @p07; //   49.58
+@1440_width8:    1440 * @p08; //   30.64
+@1440_width9:    1440 * @p09; //   18.93
+@1440_width10:   1440 * @p10; //   11.70
+@1440_width11:   1440 * @p11; //    7.23
+@1440_width12:   1440 * @p12; //    4.47
+@1440_width13:   1440 * @p13; //    2.76
+@1440_width14:   1440 * @p14; //    1.71
+@1440_width15:   1440 * @p15; //    1.05
 
-@1680_width1:  1680px * @w01; // 1038.24 px
-@1680_width2:  1680px * @w02; //  641.63 px
-@1680_width3:  1680px * @w03; //  396.53 px
-@1680_width4:  1680px * @w04; //  245.05 px
-@1680_width5:  1680px * @w05; //  151.44 px
-@1680_width6:  1680px * @w06; //   93.59 px
-@1680_width7:  1680px * @w07; //   57.84 px
-@1680_width8:  1680px * @w08; //   35.75 px
-@1680_width9:  1680px * @w09; //   22.09 px
-@1680_width10: 1680px * @w10; //   13.65 px
-@1680_width11: 1680px * @w11; //    8.44 px
-@1680_width12: 1680px * @w12; //    5.21 px
-@1680_width13: 1680px * @w13; //    3.22 px
-@1680_width14: 1680px * @w14; //    1.99 px
-@1680_width15: 1680px * @w15; //    1.23 px
+@1680_width1:    1680 * @p01; // 1038.24
+@1680_width2:    1680 * @p02; //  641.63
+@1680_width3:    1680 * @p03; //  396.53
+@1680_width4:    1680 * @p04; //  245.05
+@1680_width5:    1680 * @p05; //  151.44
+@1680_width6:    1680 * @p06; //   93.59
+@1680_width7:    1680 * @p07; //   57.84
+@1680_width8:    1680 * @p08; //   35.75
+@1680_width9:    1680 * @p09; //   22.09
+@1680_width10:   1680 * @p10; //   13.65
+@1680_width11:   1680 * @p11; //    8.44
+@1680_width12:   1680 * @p12; //    5.21
+@1680_width13:   1680 * @p13; //    3.22
+@1680_width14:   1680 * @p14; //    1.99
+@1680_width15:   1680 * @p15; //    1.23
 
-@ipad_p_width1:  768px * @w01;
-@ipad_p_width2:  768px * @w02;
-@ipad_p_width3:  768px * @w03;
-@ipad_p_width4:  768px * @w04;
-@ipad_p_width5:  768px * @w05;
-@ipad_p_width6:  768px * @w06;
-@ipad_p_width7:  768px * @w07;
-@ipad_p_width8:  768px * @w08;
-@ipad_p_width9:  768px * @w09;
-@ipad_p_width10: 768px * @w10;
-@ipad_p_width11: 768px * @w11;
-@ipad_p_width12: 768px * @w12;
-@ipad_p_width13: 768px * @w13;
-@ipad_p_width14: 768px * @w14;
-@ipad_p_width15: 768px * @w15;
+@ipad_p_width1:   768 * @p01;
+@ipad_p_width2:   768 * @p02;
+@ipad_p_width3:   768 * @p03;
+@ipad_p_width4:   768 * @p04;
+@ipad_p_width5:   768 * @p05;
+@ipad_p_width6:   768 * @p06;
+@ipad_p_width7:   768 * @p07;
+@ipad_p_width8:   768 * @p08;
+@ipad_p_width9:   768 * @p09;
+@ipad_p_width10:  768 * @p10;
+@ipad_p_width11:  768 * @p11;
+@ipad_p_width12:  768 * @p12;
+@ipad_p_width13:  768 * @p13;
+@ipad_p_width14:  768 * @p14;
+@ipad_p_width15:  768 * @p15;
 
-@ipad_l_width1:  1024px * @w01;
-@ipad_l_width2:  1024px * @w02;
-@ipad_l_width3:  1024px * @w03;
-@ipad_l_width4:  1024px * @w04;
-@ipad_l_width5:  1024px * @w05;
-@ipad_l_width6:  1024px * @w06;
-@ipad_l_width7:  1024px * @w07;
-@ipad_l_width8:  1024px * @w08;
-@ipad_l_width9:  1024px * @w09;
-@ipad_l_width10: 1024px * @w10;
-@ipad_l_width11: 1024px * @w11;
-@ipad_l_width12: 1024px * @w12;
-@ipad_l_width13: 1024px * @w13;
-@ipad_l_width14: 1024px * @w14;
-@ipad_l_width15: 1024px * @w15;
+@ipad_l_width1:  1024 * @p01;
+@ipad_l_width2:  1024 * @p02;
+@ipad_l_width3:  1024 * @p03;
+@ipad_l_width4:  1024 * @p04;
+@ipad_l_width5:  1024 * @p05;
+@ipad_l_width6:  1024 * @p06;
+@ipad_l_width7:  1024 * @p07;
+@ipad_l_width8:  1024 * @p08;
+@ipad_l_width9:  1024 * @p09;
+@ipad_l_width10: 1024 * @p10;
+@ipad_l_width11: 1024 * @p11;
+@ipad_l_width12: 1024 * @p12;
+@ipad_l_width13: 1024 * @p13;
+@ipad_l_width14: 1024 * @p14;
+@ipad_l_width15: 1024 * @p15;
 
-// Add your own layout!
-@mylayout_width: 960px;
-@mylayout_1:  @mylayout_width * @w01;
-@mylayout_2:  @mylayout_width * @w02;
-@mylayout_3:  @mylayout_width * @w03;
-@mylayout_4:  @mylayout_width * @w04;
-@mylayout_5:  @mylayout_width * @w05;
-@mylayout_6:  @mylayout_width * @w06;
-@mylayout_7:  @mylayout_width * @w07;
-@mylayout_8:  @mylayout_width * @w08;
-@mylayout_9:  @mylayout_width * @w09;
-@mylayout_10: @mylayout_width * @w10;
-@mylayout_11: @mylayout_width * @w11;
-@mylayout_12: @mylayout_width * @w12;
-@mylayout_13: @mylayout_width * @w13;
-@mylayout_14: @mylayout_width * @w14;
-@mylayout_15: @mylayout_width * @w15;
 
 //////////////////////////////////////////////
 // PROPORTION TABLES
@@ -269,17 +303,18 @@
 @line_margin: .85;
 @base: @corbusier_8; // Smaller base = Bigger size
 
-@font_size: 87.5; // (16px x 87.5) = 14px, Use 100 for 16px
+@font_size: 16;
+@em: @font_size * 1em;
 @px_per_em: (16 * @font_size) / 100; // We use this to parse px.
 @spacing_proportion: (10 / 10); // Modify to match your spacing  preferences.
 
 // Replace first var with the scale of your choice
-@h1_size: ( @corbusier_11 / @base ) * 1em;
-@h2_size: ( @corbusier_10 / @base ) * 1em;
-@h3_size: ( @corbusier_9 / @base ) * 1em;
-@h4_size: ( @corbusier_8 / @base ) * 1em;
-@h5_size: ( @corbusier_7 / @base ) * 1em;
-@h6_size: ( @corbusier_6 / @base ) * 1em;
+@h1_size: ( @corbusier_11 / @base );
+@h2_size: ( @corbusier_10 / @base );
+@h3_size: ( @corbusier_9 / @base );
+@h4_size: ( @corbusier_8 / @base );
+@h5_size: ( @corbusier_7 / @base );
+@h6_size: ( @corbusier_6 / @base );
 
 // Up and Down margin for every size
 @h1_margin: @h1_size * @line_margin;
@@ -290,7 +325,7 @@
 @h6_margin: @h6_size * @line_margin;
 
 // Top margin (.618 of total margin)
-@h1_margin_t: (@h1_margin * @spacing_proportion) * @grs; 
+@h1_margin_t: (@h1_margin * @spacing_proportion) * @grs;
 @h2_margin_t: (@h2_margin * @spacing_proportion) * @grs;
 @h3_margin_t: (@h3_margin * @spacing_proportion) * @grs;
 @h4_margin_t: (@h4_margin * @spacing_proportion) * @grs;
@@ -305,56 +340,240 @@
 @h5_margin_b: (@h5_margin * @spacing_proportion) * (1 - @grs);
 @h6_margin_b: (@h6_margin * @spacing_proportion) * (1 - @grs);
 
+// State of the art size calculation for media queries
+.font-size (@_size: 1, @_prop: 1, @_adj: 1) {
+	@size: @_size;
+	@prop: @_prop;
+	@adj: @_adj;
+	@prop_s: ~`Math.sqrt(@{prop})`;
+	@final_s: ~`((Math.floor((@{size} * (@{prop_s} * @{adj}))*100))/100) + 'em'`;
+	font-size: @final_s;}
+
+.margin (@_top: 0, @_right: 0, @_bottom: 0, @_left: 0, @_prop: 1, @_adj: 1) {
+	@top: @_top;
+	@right: @_right;
+	@bottom: @_bottom;
+	@left: @_left;
+	@prop: @_prop;
+	@adj: @_adj;
+	@prop_s: ~`Math.sqrt(@{prop})`;
+	@final_t: ~`((Math.floor((@{top} * (@{prop_s} * @{adj}))*100))/100) + 'em'`;
+	@final_r: ~`((Math.floor((@{right} * (@{prop_s} * @{adj}))*100))/100) + 'em'`;
+	@final_b: ~`((Math.floor((@{bottom} * (@{prop_s} * @{adj}))*100))/100) + 'em'`;
+	@final_l: ~`((Math.floor((@{left} * (@{prop_s} * @{adj}))*100))/100) + 'em'`;
+	margin: @final_t @final_r @final_b @final_l;}
+
+.margin-top (@_top: 0, @_prop: 1, @_adj: 1) {
+	@top: @_top;
+	@prop: @_prop;
+	@adj: @_adj;
+	@prop_s: ~`Math.sqrt(@{prop})`;
+	@final_t: ~`((Math.floor((@{top} * (@{prop_s} * @{adj}))*100))/100) + 'em'`;
+	margin-top: @final_t;}
+
+.margin-right (@_right: 0, @_prop: 1, @_adj: 1) {
+	@right: @_right;
+	@prop: @_prop;
+	@adj: @_adj;
+	@prop_s: ~`Math.sqrt(@{prop})`;
+	@final_r: ~`((Math.floor((@{right} * (@{prop_s} * @{adj}))*100))/100) + 'em'`;
+	margin-top: @final_r;}
+
+.margin-bottom (@_bottom: 0, @_prop: 1, @_adj: 1) {
+	@bottom: @_bottom;
+	@prop: @_prop;
+	@adj: @_adj;
+	@prop_s: ~`Math.sqrt(@{prop})`;
+	@final_b: ~`((Math.floor((@{bottom} * (@{prop_s} * @{adj}))*100))/100) + 'em'`;
+	margin-bottom: @final_b;}
+
+.margin-left (@_left: 0, @_prop: 1, @_adj: 1) {
+	@left: @_left;
+	@prop: @_prop;
+	@adj: @_adj;
+	@prop_s: ~`Math.sqrt(@{prop})`;
+	@final_l: ~`((Math.floor((@{left} * (@{prop_s} * @{adj}))*100))/100) + 'em'`;
+	margin-top: @final_l;}
+
+
+// Calculate width autamatically based on proportion (1 to 15) and resolution,
+// doesn't work with several width calculations.
+.single_width_px(@_num,@_res) {
+	@num: @_num;
+	@res: @_res;
+	
+	@prop: ~`Math.pow(@{grs},@{num})`;
+	@final_w: ~`((Math.floor(@{res} * @{prop})*100)/100) + 'px'`;
+	width: @final_w;}
+
+// For single percentage width
+.single_width_percent(@_num) {
+	@num: @_num;
+	
+	@prop: ~`Math.pow(@{grs},@{num})`;
+	@final_w: ~`((Math.floor(@{prop}*100)*100)/100) + '%'`;
+	width: @final_w;}
+
+// For several widths, input numbers (@640_width1 + 640_width2)
+.width_px(@_width_int) {
+	@width_int: @_width_int;
+	
+	@final_w: ~`((Math.floor(@{width_int})*100)/100) + 'px'`;
+	width: @final_w;}
+
+// For several percentage width, input numbers (@1 + @2)
+.width_percent(@_width_int) {
+	@width_int: @width_int_;
+	
+	@final_w: ~`((Math.floor(@{width_int})*100)/100) + '%'`;
+	width: @final_w;}
+
+
+
+.single_height_px(@_num,@_res) {
+	@num: @_num;
+	@res: @_res;
+	
+	@prop: ~`Math.pow(@{grs},@{num})`;
+	@final: ~`((Math.floor(@{res} * @{prop})*100)/100) + 'px'`;
+	height: @final;}
+
+.single_height_percent(@_num) {
+	@num: @_num;
+	
+	@prop: ~`Math.pow(@{grs},@{num})`;
+	@final: ~`((Math.floor(@{prop}*100)*100)/100) + '%'`;
+	height: @final;}
+
+.height_px(@_int) {
+	@int: @_int;
+	
+	@final: ~`((Math.floor(@{int})*100)/100) + 'px'`;
+	height: @final;}
+
+.height_percent(@_int) {
+	@int: @_int;
+	
+	@final: ~`((Math.floor(@{int_})*100)/100) + '%'`;
+	height: @final;}
+
+
+
+.single_padding_px(@_num,@_res) {
+	@num: @_num;
+	@res: @_res;
+	
+	@prop: ~`Math.pow(@{grs},@{num})`;
+	@final: ~`((Math.floor(@{res} * @{prop})*100)/100) + 'px'`;
+	padding: @final;}
+
+.single_padding_percent(@_num) {
+	@num: @_num;
+	
+	@prop: ~`Math.pow(@{grs},@{num})`;
+	@final: ~`((Math.floor(@{prop}*100)*100)/100) + '%'`;
+	padding: @final;}
+
+.padding_px(@_int) {
+	@int: @_int;
+	
+	@final: ~`((Math.floor(@{int})*100)/100) + 'px'`;
+	padding: @final;}
+
+.padding_percent(@_int) {
+	@int: @_int;
+	
+	@final: ~`((Math.floor(@{int_})*100)/100) + '%'`;
+	padding: @final;}
+	
+	
+	
+.single_min_height_px(@_num,@_res) {
+	@num: @_num;
+	@res: @_res;
+	
+	@prop: ~`Math.pow(@{grs},@{num})`;
+	@final: ~`((Math.floor(@{res} * @{prop})*100)/100) + 'px'`;
+	min-height: @final;}
+
+.min_height_px(@_int, @important) {
+	@int: @_int;
+	
+	@final: ~`((Math.floor(@{int})*100)/100) + 'px'`;
+	min-height: @final @important;}
+	
+.single_min_width_px(@_num,@_res) {
+	@num: @_num;
+	@res: @_res;
+	
+	@prop: ~`Math.pow(@{grs},@{num})`;
+	@final: ~`((Math.floor(@{res} * @{prop})*100)/100) + 'px'`;
+	min-width: @final;}
+
+.min_width_px(@_int, @important) {
+	@int: @_int;
+	
+	@final: ~`((Math.floor(@{int})*100)/100) + 'px'`;
+	min-width: @final @important;}
+
+
+
+
 
 //////////////////////////////////////////////
 // PRINT PROPORTIONS
 //////////////////////////////////////////////
 
+.sizes (@_prop: 1, @_adj: 1) {
+
+	@prop: @_prop;
+	@adj: @_adj;
+
+	h1 {
+		.font-size(@h1_size,@prop,@adj);
+		.margin-top(@h1_margin_t,@prop,@adj);
+		.margin-bottom(@h1_margin_b,@prop,@adj);}
+
+	h2 {
+		.font-size(@h2_size,@prop,@adj);
+		.margin-top(@h2_margin_t,@prop,@adj);
+		.margin-bottom(@h2_margin_b,@prop,@adj);}
+
+	h3 {
+		.font-size(@h3_size,@prop,@adj);
+		.margin-top(@h3_margin_t,@prop,@adj);
+		.margin-bottom(@h3_margin_b,@prop,@adj);}
+
+	h4, p, li, dd, dt {
+		.font-size(@h4_size,@prop,@adj);
+		.margin-top(@h4_margin_t,@prop,@adj);
+		.margin-bottom(@h4_margin_b,@prop,@adj);}
+
+	h5, small {
+		.font-size(@h5_size,@prop,@adj);
+		.margin-top(@h5_margin_t,@prop,@adj);
+		.margin-bottom(@h5_margin_b,@prop,@adj);}
+
+	p + p {
+		.margin-top(@h4_margin,@prop,@adj);}
+
+	h6 {
+		.font-size(@h6_size,@prop,@adj);
+		.margin-top(@h6_margin_t,@prop,@adj);
+		.margin-bottom(@h6_margin_b,@prop,@adj);}
+
+	.obra-ficha p {
+		.font-size(@h3_size,@prop,@adj);}}
+
+
+///////////////////////////////////////////////////////////////////////////
+// Media queries inspired by the brilliant http://goldengridsystem.com/  //
+///////////////////////////////////////////////////////////////////////////
+
+// Mobile phone & fluid
 body {
-	//width: @mylayout_width; // Use @width1 for fluid.
-	font-size: @font_size * 1%;
 	line-height: @line_heigth;}
-
-h1 {
-	font-size: @h1_size;
-	margin-top: @h1_margin_t;
-	margin-bottom: @h1_margin_b;}
-
-
-h2 {
-	font-size: @h2_size;
-	margin-top: @h2_margin_t;
-	margin-bottom: @h2_margin_b;}
-
-h3 {
-	font-size: @h3_size;
-	margin-top: @h3_margin_t;
-	margin-bottom: @h3_margin_b;}
-
-h4, p, li, dd, dt {
-	font-size: @h4_size;
-	margin-top: @h4_margin_t;
-	margin-bottom: @h4_margin_b;}
-
-h5, small {
-	font-size: @h5_size;
-	margin-top: @h5_margin_t;
-	margin-bottom: @h5_margin_b;}
 
 p {
 	line-height: 1.4;
 	overflow: visible;}
-
-p + p {
-	margin-top: @h4_margin;}
-
-h6 {
-	font-size: @h6_size;
-	margin-top: @h6_margin_t;
-	margin-bottom: @h6_margin_b;}
-	
-strong, b {
-	font-weight: bold;}
-
-em, i {
-	font-style: italic;}

@@ -1,14 +1,3 @@
-
-/*  Aurum CSS
-	by V’ctor Gonz‡lez
-	http://victtor.com
-	
-	This work is licensed under the Creative Commons Attribution 3.0 Unported License.
-	To view a copy of this license, visit http://creativecommons.org/licenses/by/3.0/
-	or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View,
-	California, 94041, USA. */
-
-
 //////////////////////////////////////////////
 // REUSABLE TIME-SAVERS
 //////////////////////////////////////////////
@@ -40,9 +29,6 @@
 		content: " ";
 		clear: both;
 		height: 0;}}
-	
-// Nicholas Gallagher's Micro Clearfix
-.cf:before,.cf:after{content:"";display:table;}.cf:after{clear:both;}.cf{zoom:1;}
 
 //////////////////////////////////////////////
 // CSS3 FUNCTIONS WITH RESPECTIVE FALLBACKS
@@ -81,7 +67,7 @@
 	-webkit-box-shadow: inset @hor @vert @blur rgba(@r,@g,@b,@a);
 	-moz-box-shadow: inset @hor @vert @blur rgba(@r,@g,@b,@a);
 	box-shadow: inset @hor @vert @blur rgba(@r,@g,@b,@a);}
-	
+
 .shadow_inset (@hor: 0, @vert: 0, @blur: 8px, @rgba: rgba(0,0,0,.5), @inset: inset ) {
 	-webkit-box-shadow: @arguments;
 	-moz-box-shadow: @arguments;
@@ -107,7 +93,6 @@
 
 // IE gradient filter requires the full, 6-character hex color, no abbreviations or rgb colors
 // https://less.tenderapp.com/discussions/problems/6-ie-specific-transformations-fail-with-less-css#comment_4542526
-// Although now with JS parsing you could implement it natively in this function.
 .linear_gradient (@top: #ffffff, @bottom: #000000) {
 	background-image: -webkit-gradient(linear, left top, left bottom, from(@top), to(@bottom));
 	background-image: -moz-linear-gradient(top, @top, @bottom);
@@ -120,9 +105,8 @@
 	background-color: rgba(@r,@g,@b,@a);
 	filter: e('progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=')@hex e(', endColorstr=')@hex e(')');
 	zoom: 1;}
-	
-// This function was not written by me. I can't remember who did although a quick search will do.
-.rotate (@deg: 0){ 
+
+.rotate (@deg: 0){
 	@degree: @deg;
 	@rotation: `parseInt(this.degree.toJS())`;
 	@degToRadian: `Math.PI * 2 / 360`;
@@ -152,51 +136,22 @@
 	display: box;
 	box-orient: @orient;
 	box-pack: @pack;
-	box-align: @align;}
+	box-align: @align;
+}
 
 .box_flex (@flex) {
 	-webkit-box-flex: @flex;
 	-moz-box-flex: @flex;
-	box-flex: @flex;}
-
-//////////////////////////////////////////////
-// CUTE 2.0 LOOKING CSS
-//////////////////////////////////////////////
+	box-flex: @flex;
+}
 
 .letterpress_darken (@color) {
 	color: @color;
 	text-shadow: darken(spin(@color, 150), 90%) 1px 1px 0;}
-	
+
 .letterpress_ligthen (@color) {
 	color: @color;
 	text-shadow: lighten(spin(@color, 150), 90%) 1px 1px 0;}
-	
-.top_shadow () {
-	// Place in body
-	// http://css-tricks.com/snippets/css/top-shadow/
-	&:before {
-		content: "";
-		position: fixed;
-		top: -10px;
-		left: 0;
-		width: 100%;
-		height: 10px;
-		z-index: 100;
-		.box_shadow_rgba(0px, 0px, 50px, 0,0,0,.3);}}
-			
-//////////////////////////////////////////////
-// ZURB AWSOME BUTTONS
-// http://www.zurb.com/article/266/super-awesome-buttons-with-css3-and-rgba
-// http://www.zurb.com/blog_uploads/0000/0617/buttons-03.html
-//////////////////////////////////////////////
-
-/*
-	Example usage:
-	input {
-		.awesome_zurb_button > .base;
-		.awesome_zurb_button > .large;
-		.awesome_zurb_button > .magenta;}
-*/
 
 .awesome_zurb_button () {
 	.base {
@@ -204,7 +159,7 @@
 		&:hover   {color: #fff; background-color: #111;}
 		&:active  {top: 1px;}
 		.transition(background-color,.3s,ease-in-out,0);
-		background: #222 url(../images/alert-overlay.png) repeat-x; // Get this from the original source.
+		background: #222 url(../images/alert-overlay.png) repeat-x;
 		display: inline-block;
 		padding: 5px 10px 6px;
 		color: #fff;
@@ -231,7 +186,7 @@
 	.magenta {background-color: #a9014b; &:hover{background-color: #630030;}}
 	.orange  {background-color: #ff5c00; &:hover{background-color: #d45500;}}
 	.yellow  {background-color: #ffb515; &:hover{background-color: #fc9200;}}}
-	
+
 .awesome_zurb_glow_button () {
 	.base {
 		background-image: none;
@@ -253,14 +208,14 @@
 		border: 0;
 		-webkit-animation-duration: 2s;
         -webkit-animation-iteration-count: infinite;}
-        
+
 	.small    {font-size: 11px;}
 	.medium   {font-size: 13px;}
 	.large    {font-size: 14px; padding: 8px 14px 9px;}
 	.xlarge   {font-size: 18px; padding: 12px 18px 13px;}
 	.xxlarge  {font-size: 25px; padding: 18px 24px 19px;}
 	.xxxlarge {font-size: 35px; padding: 28px 34px 29px;}
-	
+
 	.green {
 		-webkit-animation-name: greenPulse; -webkit-animation-duration: 3s;
 		&:hover{color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.50);}}
@@ -279,3 +234,20 @@
 	.yellow {
 		-webkit-animation-name: yellowPulse; -webkit-animation-duration: 3s;
 		&:hover{color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.50);}}}
+
+.top_shadow () {
+	// Place in body
+	// http://css-tricks.com/snippets/css/top-shadow/
+	&:before {
+		content: "";
+		position: fixed;
+		top: -10px;
+		left: 0;
+		width: 100%;
+		height: 10px;
+		z-index: 100;
+		.box_shadow_rgba(0px, 0px, 50px, 0,0,0,.3);}}
+
+/* Nicholas Gallagher's Micro Clearfix */
+/* For modern browsers */
+.cf () {&:before,&:after{content:"";display:table;}&:after{clear:both;}zoom:1;}
