@@ -145,3 +145,51 @@ button {  width: auto; overflow: visible; }
 
 #sidebar {
 	width: @mylayout_2;}
+
+
+// Example usage of multiple backgrounds with modernizr.
+
+@dark_start: #00589c;
+@dark_alphastart: 1; //the starting transparency
+@dark_end: #110900;
+@dark_alphaend: 1; //ending transparency
+@dark_url: "../img/paper2.png";
+@dark_fallback: #0f3550;
+
+.multiplebgs {
+	&.cssgradients {
+		&.hsla .your-texture {
+			.multiple-gradient-hsla(
+				@dark_start,
+				@dark_alphastart,
+				@dark_end,
+				@dark_alphaend, 
+				@dark_url);}
+		.no-hsla .your-texture {
+			.gradient-multiple-no-hsla(
+				@dark_start,
+				@dark_end,
+				@dark_url);}}
+	.no-cssgradients .your-texture {
+		.oldies-gradient(
+			@dark_start,
+			@dark_end,
+			@dark_fallback);}}
+	
+.no-multiplebgs {
+	.cssgradients {
+		.hsla .your-texture {
+			.gradient-hsla(
+				@dark_start,
+				@dark_alphastart,
+				@dark_end,
+				@dark_alphaend);}
+		.no-hsla .your-texture {
+			.gradient-no-hsla(
+				@dark_start,
+				@dark_end);}}
+	.no-cssgradients .your-texture {
+		.oldies-gradient(
+			@dark_start,
+			@dark_end,
+			@dark_fallback);}}

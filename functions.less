@@ -2,22 +2,20 @@
 // REUSABLE TIME-SAVERS
 //////////////////////////////////////////////
 
-.links (@link_color, @link_decoration, @hover_color, @hover_decoration, @active_color, @active_decoration) {
+.links (@link_color, @link_decoration, @visited_color, @visited_decoration, @hover_color, @hover_decoration, @active_color, @active_decoration) {
 	a {
 		&:link {
 			color: @link_color;
 			text-decoration: @link_decoration;}
 		&:visited {
-			color: @link_color;
-			text-decoration: @link_decoration;}
+			color: @visited_color;
+			text-decoration: @visited_decoration;}
 		&:hover, &:focus {
 			color: @hover_color;
 			text-decoration: @hover_decoration;}
 		&:active {
 			color: @active_color;
-			text-decoration: @active_decoration;
-			top: 1px;
-			left: 1px;}}}
+			text-decoration: @active_decoration;}}}
 
 .center () {margin: 0 auto;}
 
@@ -56,28 +54,17 @@
 	-moz-box-shadow: @hor @vert @blur @shadow;
 	box-shadow: @hor @vert @blur @shadow;}
 
-// Box Shadow RGBA
-.box_shadow_rgba (@hor: 0, @vert: 0, @blur: 8px, @r,@g,@b,@a) {
-	-webkit-box-shadow: @hor @vert @blur rgba(@r,@g,@b,@a);
-	-moz-box-shadow: @hor @vert @blur rgba(@r,@g,@b,@a);
-	box-shadow: @hor @vert @blur rgba(@r,@g,@b,@a);}
-
 // Box Shadow Inset
-.box_shadow_inset (@hor: 0, @vert: 0, @blur: 8px, @r,@g,@b,@a) {
-	-webkit-box-shadow: inset @hor @vert @blur rgba(@r,@g,@b,@a);
-	-moz-box-shadow: inset @hor @vert @blur rgba(@r,@g,@b,@a);
-	box-shadow: inset @hor @vert @blur rgba(@r,@g,@b,@a);}
-
-.shadow_inset (@hor: 0, @vert: 0, @blur: 8px, @rgba: rgba(0,0,0,.5), @inset: inset ) {
-	-webkit-box-shadow: @arguments;
-	-moz-box-shadow: @arguments;
-	box-shadow: @arguments;}
+.box_shadow_inset (@hor: 0, @vert: 0, @blur: 8px, @color) {
+	-webkit-box-shadow: inset @hor @vert @blur @color;
+	-moz-box-shadow: inset @hor @vert @blur @color;
+	box-shadow: inset @hor @vert @blur @color;}
 
 // Box Shadow Both
-.box_shadow_both (@hor: 0, @vert: 0, @blur: 8px, @r,@g,@b,@a, @hor2: 0, @vert2: 0, @blur2: 8px, @r2,@g2,@b2,@a2) {
-	-webkit-box-shadow: inset @hor @vert @blur rgba(@r,@g,@b,@a), @hor2 @vert2 @blur2 rgba(@r2,@g2,@b2,@a2);
-	-moz-box-shadow: inset @hor @vert @blur rgba(@r,@g,@b,@a), @hor2 @vert2 @blur2 rgba(@r2,@g2,@b2,@a2);
-	box-shadow: inset @hor @vert @blur rgba(@r,@g,@b,@a), @hor2 @vert2 @blur2 rgba(@r2,@g2,@b2,@a2);}
+.box_shadow_both (@hor, @vert, @blur, @color1, @hor2, @vert2, @blur2, @color2) {
+	-webkit-box-shadow: inset @hor @vert @blur @color1, @hor2 @vert2 @blur2 @color2;
+	-moz-box-shadow: inset @hor @vert @blur @color1, @hor2 @vert2 @blur2 @color2;
+	box-shadow: inset @hor @vert @blur @color1, @hor2 @vert2 @blur2 @color2;}
 
 // Transition
 .transition (@range: all, @time: 1s, @ease: ease-in-out, @stay: 0) {
@@ -99,10 +86,11 @@
 	background-image: linear-gradient(top, @top, @bottom);
 	filter: e('progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=')@top e(', endColorstr=')@bottom e(')');
 	zoom: 1;}
+	
 
 // RGBA background
-.box_rgba (@r,@g,@b,@a,@hex) {
-	background-color: rgba(@r,@g,@b,@a);
+.box_rgba (@rgba,@hex) {
+	background-color: @rgba;
 	filter: e('progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=')@hex e(', endColorstr=')@hex e(')');
 	zoom: 1;}
 
@@ -139,17 +127,59 @@
 	box-align: @align;
 }
 
+.display_box () {
+	display: -webkit-box;
+	display: -moz-box;
+	display: box;}
+
+.box_orient (@orient) {
+	-webkit-box-orient: @orient;
+	-moz-box-orient: @orient;
+	box-orient: @orient;}
+
 .box_flex (@flex) {
 	-webkit-box-flex: @flex;
 	-moz-box-flex: @flex;
-	box-flex: @flex;
-}
+	box-flex: @flex;}
+
+.box-sizing-border-box () {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	ms-box-sizing: border-box;
+	box-sizing: border-box;}
+	
+.flex-order (@order) {
+	-webkit-box-ordinal-group: @order;
+	-moz-box-ordinal-group: @order;
+	box-ordinal-group: @order;
+	-webkit-flex-order: @order;
+	-moz-flex-order: @order;
+	flex-order: @order;}
+
+// To use with your prefered unit, multiply by 1unit or pass the argument in the unit. Do not use integers
+// e.g. .box_columns(2, 5em);
+.box_columns (@count, @gap) {
+  -webkit-column-count: @count;  -webkit-column-gap: @gap;
+     -moz-column-count: @count;     -moz-column-gap: @gap;
+          column-count: @count;          column-gap: @gap;}
+
+// To use with your prefered unit, multiply by 1unit or pass the argument in the unit. Do not use integers
+// e.g. .box_columns_width(50em, @1280_width6 * 1px);
+.box_columns_width (@width, @gap) {
+  -webkit-column-width: @width;  -webkit-column-gap: @gap;
+     -moz-column-width: @width;     -moz-column-gap: @gap;
+          column-width: @width;          column-gap: @gap;}
+          
+.box_columns_width_em (@width, @gap) {
+  -webkit-column-width: @width;  -webkit-column-gap: @gap;
+     -moz-column-width: @width;     -moz-column-gap: @gap;
+          column-width: @width;          column-gap: @gap;}
 
 .letterpress_darken (@color) {
 	color: @color;
 	text-shadow: darken(spin(@color, 150), 90%) 1px 1px 0;}
 
-.letterpress_ligthen (@color) {
+.letterpress_lighten (@color) {
 	color: @color;
 	text-shadow: lighten(spin(@color, 150), 90%) 1px 1px 0;}
 
@@ -159,13 +189,13 @@
 		&:hover   {color: #fff; background-color: #111;}
 		&:active  {top: 1px;}
 		.transition(background-color,.3s,ease-in-out,0);
-		background: #222 url(../images/alert-overlay.png) repeat-x;
+		background: #222 url(../img/alert-overlay.png) repeat-x;
 		display: inline-block;
 		padding: 5px 10px 6px;
 		color: #fff;
 		text-decoration: none;
 		.rounded_corners(8px);
-		.box_shadow_rgba(0,1px,3px,0,0,0,.5);
+		.box_shadow(0,1px,3px,rgba(0,0,0,.5));
 		border-bottom: 1px solid rgba(0,0,0,0.25);
 		position: relative;
 		cursor: pointer;
@@ -197,7 +227,7 @@
 		color: #fff;
 		text-decoration: none;
 		.rounded_corners(10px);
-		.box_shadow_rgba(0,1px,3px,0,0,0,.5);
+		.box_shadow(0,1px,3px,rgba(0,0,0,.5));
 		border-bottom: 1px solid rgba(0,0,0,0.25);
 		position: relative;
 		cursor: pointer;
@@ -234,6 +264,39 @@
 	.yellow {
 		-webkit-animation-name: yellowPulse; -webkit-animation-duration: 3s;
 		&:hover{color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.50);}}}
+		
+.victor_button () {
+	.base {
+		&:visited {color: #fff;}
+		&:hover   {color: #fff; background-color: #111;}
+		&:active  {top: 1px;}
+		.transition(background-color,.3s,ease-in-out,0);
+		display: inline-block;
+		padding: 5px 10px 6px;
+		color: #fff;
+		text-decoration: none;
+		.rounded_corners(8px);
+		.box_shadow(0,1px,3px,rgba(0,0,0,.5));
+		border-bottom: 1px solid rgba(0,0,0,0.25);
+		position: relative;
+		cursor: pointer;
+		text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+		font: 13px/1;
+		font-weight: 600;
+		text-decoration: none;
+		border: 0;}
+	.small   {font-size: 11px;}
+	.medium  {font-size: 13px;}
+	.large   {font-size: 14px; padding: 8px 14px 9px;}
+	.xlarge   {font-size: 18px; padding: 12px 18px 13px;}
+	.xxlarge  {font-size: 25px; padding: 18px 24px 19px;}
+	.xxxlarge {font-size: 35px; padding: 28px 34px 29px;}
+	.green   {background-color: #91bd09; &:hover{background-color: #749a02;}}
+	.blue    {background-color: #2daebf; &:hover{background-color: #007d9a;}}
+	.red     {background-color: #e33100; &:hover{background-color: #872300;}}
+	.magenta {background-color: #a9014b; &:hover{background-color: #630030;}}
+	.orange  {background-color: #ff5c00; &:hover{background-color: #d45500;}}
+	.yellow  {background-color: #ffb515; &:hover{background-color: #fc9200;}}}
 
 .top_shadow () {
 	// Place in body
@@ -246,8 +309,209 @@
 		width: 100%;
 		height: 10px;
 		z-index: 100;
-		.box_shadow_rgba(0px, 0px, 50px, 0,0,0,.3);}}
+		.box_shadow(0px, 0px, 50px, rgba(0,0,0,.3));}}
 
 /* Nicholas Gallagher's Micro Clearfix */
 /* For modern browsers */
 .cf () {&:before,&:after{content:"";display:table;}&:after{clear:both;}zoom:1;}
+
+// Hex to hsla
+// http://stackoverflow.com/questions/5176114/lesscss-converting-rgba-to-hex-how-to-nest-color-variables-into-a-mixin
+.hex_to_hsla(@color, @alpha: 1) {
+	background: hsla(hue(@color), saturation(@color), lightness(@color), @alpha);}
+	
+.oldies-gradient (@start, @end, @fallback) {
+	// Very old
+	background-color: @fallback;
+	// IE 6 - 9
+	filter: e('progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=')@start e(', endColorstr=')@end e(')');
+	zoom: 1;}
+           
+.gradient-no-hsla (@start, @end) {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(@start), to(@end)); // Saf4+, Chrome
+	background-image: -webkit-linear-gradient(top, @start, @end); // Chrome 10+, Saf5.1+, iOS 5+
+	background-image:    -moz-linear-gradient(top, @start, @end); // FF3.6
+	background-image:     -ms-linear-gradient(top, @start, @end); // IE10
+	background-image:      -o-linear-gradient(top, @start, @end); // Opera 11.10+
+	background-image:         linear-gradient(top, @start, @end);}
+
+.gradient-hsla (@start, @alphastart, @end, @alphaend) {
+	// Saf4+, Chrome
+	background-image: -webkit-gradient(linear, left top, left bottom,
+		from(hsla(
+			hue(@start),
+			saturation(@start),
+			lightness(@start),
+			@alphastart)),
+		to(hsla(
+			hue(@end),
+			saturation(@end),
+			lightness(@end),
+			@alphaend)));
+	 // Chrome 10+, Saf5.1+, iOS 5+
+	background-image: -webkit-linear-gradient(top, 
+		hsla(
+			hue(@start),
+			saturation(@start),
+			lightness(@start),
+			@alphastart),
+		hsla(
+			hue(@end),
+			saturation(@end),
+			lightness(@end),
+			@alphaend));
+	// FF3.6
+	background-image: -moz-linear-gradient(top, hsla(
+			hue(@start),
+			saturation(@start),
+			lightness(@start),
+			@alphastart),
+		hsla(
+			hue(@end),
+			saturation(@end),
+			lightness(@end),
+			@alphaend));
+	// IE10
+	background-image: -ms-linear-gradient(top, hsla(
+			hue(@start),
+			saturation(@start),
+			lightness(@start),
+			@alphastart),
+		hsla(
+			hue(@end),
+			saturation(@end),
+			lightness(@end),
+			@alphaend));
+	// Opera 11.10+
+	background-image: -o-linear-gradient(top, hsla(
+			hue(@start),
+			saturation(@start),
+			lightness(@start),
+			@alphastart),
+		hsla(
+			hue(@end),
+			saturation(@end),
+			lightness(@end),
+			@alphaend));
+	background-image: linear-gradient(top,hsla(
+			hue(@start),
+			saturation(@start),
+			lightness(@start),
+			@alphastart),
+		hsla(
+			hue(@end),
+			saturation(@end),
+			lightness(@end),
+			@alphaend));}
+	
+.gradient-multiple-no-hsla (@start, @end, @url) {
+	@_url: @url;
+	// Saf4+, Chrome
+	background:
+		url("@{_url}") repeat,
+		-webkit-gradient(linear, left top, left bottom, from(@start), to(@end));
+	// Chrome 10+, Saf5.1+, iOS 5+
+	background:
+		url("@{_url}") repeat,
+		-webkit-linear-gradient(top, @start, @end);
+	// FF3.6
+	background:
+		url("@{_url}") repeat,
+		-moz-linear-gradient(top, @start, @end);
+	// IE10
+	background:
+		url("@{_url}") repeat,
+		-ms-linear-gradient(top, @start, @end);
+	// Opera 11.10+
+	background:
+		url("@{_url}") repeat,
+		-o-linear-gradient(top, @start, @end);
+	background:
+		url("@{_url}") repeat,
+		linear-gradient(top, @start, @end);}
+		
+.multiple-gradient-hsla (@start, @alphastart, @end, @alphaend, @url) {
+	@_url: @url;
+	// Saf4+, Chrome
+	background:
+		url("@{_url}") repeat,
+		-webkit-gradient(linear, left top, left bottom,
+			from(hsla(
+				hue(@start),
+				saturation(@start),
+				lightness(@start),
+				@alphastart)),
+			to(hsla(
+				hue(@end),
+				saturation(@end),
+				lightness(@end),
+				@alphaend)));
+	 // Chrome 10+, Saf5.1+, iOS 5+
+	background:
+		url("@{_url}") repeat,
+		-webkit-linear-gradient(top, 
+			hsla(
+				hue(@start),
+				saturation(@start),
+				lightness(@start),
+				@alphastart),
+			hsla(
+				hue(@end),
+				saturation(@end),
+				lightness(@end),
+				@alphaend));
+	// FF3.6
+	background:
+		url("@{_url}") repeat,
+		-moz-linear-gradient(top,
+			hsla(
+				hue(@start),
+				saturation(@start),
+				lightness(@start),
+				@alphastart),
+			hsla(
+				hue(@end),
+				saturation(@end),
+				lightness(@end),
+				@alphaend));
+	// IE10
+	background:
+		url("@{_url}") repeat,
+		-ms-linear-gradient(top,
+			hsla(
+				hue(@start),
+				saturation(@start),
+				lightness(@start),
+				@alphastart),
+			hsla(
+				hue(@end),
+				saturation(@end),
+				lightness(@end),
+				@alphaend));
+	// Opera 11.10+
+	background:
+		url("@{_url}") repeat,
+		-o-linear-gradient(top,
+			hsla(
+				hue(@start),
+				saturation(@start),
+				lightness(@start),
+				@alphastart),
+			hsla(
+				hue(@end),
+				saturation(@end),
+				lightness(@end),
+				@alphaend));
+	background:
+		url("@{_url}") repeat,
+		linear-gradient(top,
+			hsla(
+				hue(@start),
+				saturation(@start),
+				lightness(@start),
+				@alphastart),
+			hsla(
+				hue(@end),
+				saturation(@end),
+				lightness(@end),
+				@alphaend));}
